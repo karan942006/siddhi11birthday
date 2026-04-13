@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Siddhi 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   CSS VARIABLES & BASE RESET
+   ============================================ */
+:root {
+  --pink: #FFC0CB;
+  --lavender: #E6E6FA;
+  --peach: #FFDAB9;
+  --cream: #FFF8F0;
+  --purple: #D8BFD8;
+  --deep-pink: #FF9BAA;
+  --rose: #FFB7C5;
+  --soft-white: #FFFAF8;
+  --text-dark: #5a3e4a;
+  --text-mid: #8b6474;
+  --text-light: #c4a0b0;
+  --glow-pink: rgba(255,192,203,0.6);
+  --glow-purple: rgba(216,191,216,0.5);
+  --glass-bg: rgba(255,248,240,0.55);
+  --glass-border: rgba(255,192,203,0.3);
+  --shadow-soft: 0 8px 32px rgba(255,155,170,0.2);
+  --shadow-glow: 0 0 30px rgba(255,192,203,0.5);
+  --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+[data-theme="dark"] {
+  --cream: #2a1a22;
+  --soft-white: #1e1118;
+  --text-dark: #f5d4e0;
+  --text-mid: #d4aabf;
+  --text-light: #9d7089;
+  --glass-bg: rgba(42,26,34,0.7);
+  --glass-border: rgba(255,192,203,0.2);
+  --shadow-soft: 0 8px 32px rgba(0,0,0,0.4);
+  --glow-pink: rgba(255,192,203,0.3);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  cursor: none;
+  overflow-x: hidden;
+  transition: background 0.5s, color 0.5s;
+}
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+#cursor {
+  position: fixed;
+  width: 16px; height: 16px;
+  background: var(--deep-pink);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  box-shadow: 0 0 10px var(--glow-pink);
+}
+.heart-trail {
+  position: fixed;
+  pointer-events: none;
+  font-size: 14px;
+  z-index: 9998;
+  animation: trailFade 0.8s ease-out forwards;
+}
+@keyframes trailFade {
+  0% { opacity:1; transform:translateY(0) scale(1); }
+  100% { opacity:0; transform:translateY(-40px) scale(0.3); }
+}
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--pink), var(--purple)); border-radius: 10px; }
+/* ============================================
+   LOADING SCREEN
+   ============================================ */
+#loader {
+  position: fixed; inset: 0;
+  background: linear-gradient(135deg, #FFE4EC 0%, #F5E6FF 50%, #FFE8D6 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 10000;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; }
+.loader-hearts {
+  display: flex; gap: 12px; margin-bottom: 30px;
+}
+.loader-heart {
+  font-size: 2rem;
+  animation: loaderBounce 1s ease-in-out infinite;
+}
+.loader-heart:nth-child(2) { animation-delay: 0.2s; }
+.loader-heart:nth-child(3) { animation-delay: 0.4s; }
+@keyframes loaderBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.loader-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: #8b6474;
+  text-align: center;
+  padding: 0 20px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+.loader-bar-wrap {
+  margin-top: 30px;
+  width: 200px; height: 6px;
+  background: rgba(255,192,203,0.3);
+  border-radius: 10px; overflow: hidden;
+}
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink), var(--purple), var(--peach));
+  border-radius: 10px;
+  animation: loadBar 2.5s ease-in-out forwards;
+}
+@keyframes loadBar { 0%{width:0} 100%{width:100%} }
+/* ============================================
+   FLOATING BACKGROUND ELEMENTS
+   ============================================ */
+.floaties {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.floaty {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.15;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+/* ============================================
+   TOP NAV
+   ============================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 16px 30px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: var(--transition);
+}
+.nav-brand {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+  color: var(--deep-pink);
+  font-weight: 700;
+}
+.nav-controls { display: flex; gap: 12px; align-items: center; }
+.nav-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  font-size: 1.1rem;
+  cursor: none;
+  transition: var(--transition);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(10px);
+}
+.nav-btn:hover { transform: scale(1.15); box-shadow: var(--shadow-glow); background: var(--pink); }
+/* ============================================
+   HERO SECTION
+   ============================================ */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #FFF0F5 0%, #F8F0FF 30%, #FFF5EC 70%, #FFF0F5 100%);
+  overflow: hidden;
+  padding: 100px 20px 60px;
+}
+.hero-canvas {
+  position: absolute; inset: 0;
+  z-index: 0;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  animation: heroReveal 1.2s ease-out 0.3s both;
+}
+@keyframes heroReveal {
+  from { opacity:0; transform:translateY(40px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.hero-greeting {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(3rem, 10vw, 7rem);
+  color: var(--deep-pink);
+  line-height: 1;
+  text-shadow: 0 0 40px var(--glow-pink);
+  margin-bottom: 20px;
+}
+.hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--text-mid);
+  margin-bottom: 50px;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-left: auto; margin-right: auto;
+}
+.hero-btn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--deep-pink), var(--purple));
+  color: white;
+  border: none;
+  border-radius: 60px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: none;
+  transition: var(--transition);
+  box-shadow: 0 10px 40px rgba(255,155,170,0.4);
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  border-radius: 60px;
+}
+.hero-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 20px 60px rgba(255,155,170,0.5);
+}
+.hero-scroll-hint {
+  position: absolute; bottom: 30px;
+  left: 50%; transform: translateX(-50%);
+  font-size: 1.5rem;
+  animation: bounce 2s ease-in-out infinite;
+  color: var(--text-light);
+}
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+/* ============================================
+   SECTIONS SHARED
+   ============================================ */
+section {
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.section-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--deep-pink);
+  text-align: center;
+  margin-bottom: 16px;
+  text-shadow: 0 0 30px var(--glow-pink);
+}
+.section-sub {
+  text-align: center;
+  color: var(--text-mid);
+  font-size: 1.05rem;
+  margin-bottom: 60px;
+  font-style: italic;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+/* reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+/* ============================================
+   BIRTHDAY DATE SECTION
+   ============================================ */
+#bday {
+  background: linear-gradient(160deg, #FFF5FA 0%, #F5EEFF 100%);
+  text-align: center;
+}
+.bday-card {
+  display: inline-block;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 60px 80px;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-soft), 0 0 60px rgba(216,191,216,0.2);
+  position: relative;
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
+}
+.bday-card::before {
+  content: '';
+  position: absolute; top:-50%; left:-50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(255,192,203,0.1), transparent, rgba(216,191,216,0.1), transparent);
+  animation: spin 8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.bday-date {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: var(--deep-pink);
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+}
+.bday-tagline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--text-mid);
+  position: relative;
+}
+#typewriter::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--deep-pink);
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+/* ============================================
+   GALLERY SECTION
+   ============================================ */
+#gallery {
+  background: linear-gradient(160deg, #FFF8EC 0%, #FFF0F5 100%);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+}
+.polaroid {
+  background: white;
+  padding: 16px 16px 50px;
+  border-radius: 4px;
+  box-shadow: 0 6px 30px rgba(255,155,170,0.15);
+  transform: rotate(var(--rot, -2deg));
+  transition: var(--transition);
+  cursor: none;
+  position: relative;
+}
+.polaroid:nth-child(2n) { --rot: 2deg; }
+.polaroid:nth-child(3n) { --rot: -1deg; }
+.polaroid:nth-child(4n) { --rot: 3deg; }
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.05) translateY(-10px);
+  box-shadow: 0 20px 50px rgba(255,155,170,0.3);
+  z-index: 10;
+}
+.polaroid-img {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--pink), var(--lavender), var(--peach));
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+.polaroid-img span { filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); }
+.polaroid-caption {
+  text-align: center;
+  margin-top: 12px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1rem;
+  color: var(--text-mid);
+}
+/* MODAL */
+#modal {
+  position: fixed; inset: 0;
+  background: rgba(90,62,74,0.5);
+  backdrop-filter: blur(10px);
+  z-index: 5000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: var(--transition);
+}
+#modal.open { opacity:1; visibility:visible; }
+.modal-box {
+  background: var(--soft-white);
+  border-radius: 30px;
+  padding: 50px 40px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  transform: scale(0.8);
+  transition: var(--transition);
+  box-shadow: 0 30px 80px rgba(255,155,170,0.3);
+  border: 1px solid var(--glass-border);
+}
+#modal.open .modal-box { transform: scale(1); }
+.modal-emoji { font-size: 3rem; margin-bottom: 20px; }
+.modal-msg {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+.modal-close {
+  padding: 12px 36px;
+  background: linear-gradient(135deg, var(--deep-pink), var(--purple));
+  color: white;
+  border: none;
+  border-radius: 40px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: none;
+  transition: var(--transition);
+}
+.modal-close:hover { transform: scale(1.05); box-shadow: var(--shadow-glow); }
+/* ============================================
+   REASONS SECTION
+   ============================================ */
+#reasons {
+  background: linear-gradient(160deg, #FFF0F8 0%, #F8EEFF 100%);
+}
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+.flip-card {
+  height: 220px;
+  perspective: 1000px;
+  cursor: none;
+}
+.flip-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+.flip-card:hover .flip-inner, .flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front, .flip-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
+}
+.flip-front {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+}
+.flip-back {
+  background: linear-gradient(135deg, var(--deep-pink), var(--purple));
+  transform: rotateY(180deg);
+}
+.flip-emoji { font-size: 2.5rem; margin-bottom: 12px; }
+.flip-front-text { color: var(--text-mid); font-size: 0.9rem; font-style: italic; }
+.flip-back-text {
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.6;
+}
+/* ============================================
+   GIFTS SECTION
+   ============================================ */
+#gifts {
+  background: linear-gradient(160deg, #FFF5EC 0%, #FFF0F5 100%);
+  text-align: center;
+}
+.gifts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.gift-item {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 40px 30px;
+  min-width: 180px;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-soft);
+  cursor: none;
+  transition: var(--transition);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 16px;
+}
+.gift-item:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 60px rgba(255,155,170,0.3);
+}
+.gift-emoji {
+  font-size: 3.5rem;
+  animation: wiggle 3s ease-in-out infinite;
+  display: block;
+}
+.gift-item:nth-child(2) .gift-emoji { animation-delay: 1s; }
+.gift-item:nth-child(3) .gift-emoji { animation-delay: 2s; }
+@keyframes wiggle {
+  0%,100%{transform:rotate(0deg)}
+  25%{transform:rotate(-8deg)}
+  75%{transform:rotate(8deg)}
+}
+.gift-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  color: var(--text-mid);
+}
+/* gift popup */
+#gift-popup {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: white;
+  border-radius: 30px;
+  padding: 40px 50px;
+  z-index: 5000;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(255,155,170,0.4);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid var(--glass-border);
+  max-width: 380px;
+  width: 90%;
+}
+#gift-popup.show { transform: translate(-50%, -50%) scale(1); }
+#gift-popup-emoji { font-size: 3rem; display: block; margin-bottom: 16px; }
+#gift-popup-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+/* ============================================
+   LETTER SECTION
+   ============================================ */
+#letter {
+  background: linear-gradient(135deg, #FFF0F5 0%, #F5EEFF 50%, #FFF5EC 100%);
+  text-align: center;
+}
+.letter-card {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--soft-white);
+  border-radius: 30px;
+  padding: 60px 50px;
+  box-shadow: var(--shadow-soft), 0 0 80px rgba(216,191,216,0.2);
+  border: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+}
+.letter-card::before {
+  content: '💌';
+  position: absolute;
+  top: -20px; right: -20px;
+  font-size: 6rem;
+  opacity: 0.06;
+}
+.letter-from {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+  color: var(--deep-pink);
+  margin-bottom: 30px;
+}
+.letter-body {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--text-mid);
+  text-align: left;
+  min-height: 200px;
+}
+.letter-sig {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  color: var(--deep-pink);
+  margin-top: 30px;
+  text-align: right;
+}
+/* ============================================
+   SURPRISE SECTION
+   ============================================ */
+#surprise {
+  background: linear-gradient(135deg, #FFF5FA 0%, #F0EEFF 100%);
+  text-align: center;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.surprise-btn {
+  display: inline-block;
+  padding: 22px 60px;
+  background: linear-gradient(135deg, #FF6B8A, #A855F7);
+  color: white;
+  border: none;
+  border-radius: 60px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: none;
+  transition: var(--transition);
+  box-shadow: 0 15px 50px rgba(168,85,247,0.3);
+  letter-spacing: 0.5px;
+  margin-top: 30px;
+}
+.surprise-btn:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 25px 70px rgba(168,85,247,0.45);
+}
+.surprise-reveal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.surprise-reveal.show { display: flex; }
+.surprise-big {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  background: linear-gradient(135deg, var(--deep-pink), #A855F7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%,100%{filter:drop-shadow(0 0 10px rgba(255,155,170,0.5))}
+  50%{filter:drop-shadow(0 0 30px rgba(255,155,170,0.9))}
+}
+.surprise-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--text-mid);
+  margin-top: 10px;
+}
+/* Balloons */
+.balloons-container {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  pointer-events: none;
+  z-index: 4000;
+  display: none;
+}
+.balloons-container.show { display: block; }
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  font-size: 3rem;
+  animation: riseUp 4s ease-out forwards;
+}
+@keyframes riseUp {
+  to { transform: translateY(-110vh) rotate(15deg); opacity: 0; }
+}
+/* ============================================
+   SECRET SECTION
+   ============================================ */
+#secret-section {
+  background: linear-gradient(160deg, #FFF5FA 0%, #F5F0FF 100%);
+  text-align: center;
+  padding: 80px 20px;
+}
+.secret-input-wrap {
+  display: flex; gap: 12px;
+  justify-content: center; flex-wrap: wrap;
+  margin-top: 30px;
+}
+.secret-input {
+  padding: 14px 24px;
+  border: 2px solid var(--glass-border);
+  border-radius: 40px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  background: var(--glass-bg);
+  color: var(--text-dark);
+  outline: none;
+  width: 280px;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+.secret-input:focus { border-color: var(--deep-pink); box-shadow: 0 0 20px var(--glow-pink); }
+.secret-btn {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, var(--deep-pink), var(--purple));
+  color: white;
+  border: none;
+  border-radius: 40px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  cursor: none;
+  transition: var(--transition);
+}
+.secret-btn:hover { transform: scale(1.05); }
+.secret-msg {
+  margin-top: 30px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: var(--deep-pink);
+  display: none;
+  animation: fadeInUp 0.6s ease-out;
+}
+.secret-msg.show { display: block; }
+@keyframes fadeInUp {
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: linear-gradient(135deg, #FFE4EC, #F0E8FF, #FFE8D6);
+  text-align: center;
+  padding: 60px 20px;
+}
+.footer-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  color: var(--deep-pink);
+  text-shadow: 0 0 20px var(--glow-pink);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+.footer-sub {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+/* ============================================
+   CONFETTI CANVAS
+   ============================================ */
+#confetti-canvas {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 3000;
+  display: none;
+}
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 600px) {
+  .bday-card { padding: 40px 24px; }
+  .letter-card { padding: 40px 24px; }
+  .reasons-grid { grid-template-columns: 1fr; }
+  .gifts-grid { flex-direction: column; align-items: center; }
+  nav { padding: 12px 16px; }
+}
+/* ============================================
+   DARK MODE extras
+   ============================================ */
+[data-theme="dark"] .polaroid { background: #2e1e28; }
+[data-theme="dark"] .flip-front { background: rgba(50,30,45,0.8); }
+[data-theme="dark"] .letter-card { background: #2a1a22; }
+[data-theme="dark"] #gift-popup { background: #2a1a22; }
+[data-theme="dark"] #hero { background: linear-gradient(135deg, #1e1020 0%, #1a0e22 30%, #201510 70%, #1e1020 100%); }
+[data-theme="dark"] #bday { background: linear-gradient(160deg, #1e1020 0%, #180e28 100%); }
+[data-theme="dark"] #gallery { background: linear-gradient(160deg, #201510 0%, #1e1020 100%); }
+[data-theme="dark"] #reasons { background: linear-gradient(160deg, #1e1020 0%, #180e28 100%); }
+[data-theme="dark"] #gifts { background: linear-gradient(160deg, #201510 0%, #1e1020 100%); }
+[data-theme="dark"] #letter { background: linear-gradient(135deg, #1e1020 0%, #180e28 50%, #201510 100%); }
+[data-theme="dark"] #surprise { background: linear-gradient(135deg, #1e1020 0%, #16102a 100%); }
+[data-theme="dark"] #secret-section { background: linear-gradient(160deg, #1e1020 0%, #16102a 100%); }
+[data-theme="dark"] footer { background: linear-gradient(135deg, #2a1018, #1a0e28, #281408); }
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-hearts">
+    <span class="loader-heart">💖</span>
+    <span class="loader-heart">🌸</span>
+    <span class="loader-heart">✨</span>
+  </div>
+  <div class="loader-text">Loading something special for Siddhi 💖</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+<!-- FLOATING BACKGROUND ELEMENTS -->
+<div class="floaties" id="floaties"></div>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- BALLOONS -->
+<div class="balloons-container" id="balloons"></div>
+
+<!-- MODAL -->
+<div id="modal">
+  <div class="modal-box">
+    <div class="modal-emoji">📸</div>
+    <div class="modal-msg">"Every moment with you is a memory I'd keep forever. This one means a lot to me 💖"</div>
+    <button class="modal-close" onclick="closeModal()">Close 💕</button>
+  </div>
+</div>
+
+<!-- GIFT POPUP -->
+<div id="gift-popup">
+  <span id="gift-popup-emoji">💝</span>
+  <p id="gift-popup-text">Sending you all the love!</p>
+  <br>
+  <button class="modal-close" onclick="closeGiftPopup()" style="margin-top:16px">Aww thank you! 🥺</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">✨ Siddhi 💖</div>
+  <div class="nav-controls">
+    <button class="nav-btn" id="music-btn" title="Toggle Music" onclick="toggleMusic()">🎵</button>
+    <button class="nav-btn" id="theme-btn" title="Toggle Theme" onclick="toggleTheme()">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas class="hero-canvas" id="particle-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-greeting">Hey Siddhi 💖</div>
+    <div class="hero-sub">I made something special just for you… something as beautiful as you are 🌸</div>
+    <button class="hero-btn" onclick="scrollToNext()">Click me Pookie 🥺👉👈</button>
+  </div>
+  <div class="hero-scroll-hint">⬇️</div>
+</section>
+
+<!-- BIRTHDAY DATE -->
+<section id="bday">
+  <div class="container reveal">
+    <div class="section-title">A Very Special Day 🌟</div>
+    <div class="section-sub">The universe did something magical on this day</div>
+    <div style="text-align:center">
+      <div class="bday-card">
+        <span class="bday-date">11 April 2006 💫</span>
+        <div class="bday-tagline" id="typewriter"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container reveal">
+    <div class="section-title">Our Moments 📸</div>
+    <div class="section-sub">Some memories are just too precious to forget 💖</div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+</section>
+
+<!-- REASONS -->
+<section id="reasons">
+  <div class="container reveal">
+    <div class="section-title">Why You're So Special ✨</div>
+    <div class="section-sub">Hover on each card to reveal a little truth 🌸</div>
+    <div class="reasons-grid" id="reasons-grid"></div>
+  </div>
+</section>
+
+<!-- GIFTS -->
+<section id="gifts">
+  <div class="container reveal">
+    <div class="section-title">Virtual Gifts For You 🎁</div>
+    <div class="section-sub">Click each one to unwrap it 💝</div>
+    <div class="gifts-grid" id="gifts-grid"></div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="container reveal">
+    <div class="section-title">A Little Note 💌</div>
+    <div class="section-sub">From the heart, just for you</div>
+    <div class="letter-card">
+      <div class="letter-from">Dear Siddhi,</div>
+      <div class="letter-body" id="letter-body"></div>
+      <div class="letter-sig">— with all my heart 💖</div>
+    </div>
+  </div>
+</section>
+
+<!-- SURPRISE -->
+<section id="surprise">
+  <div class="container">
+    <div id="surprise-pre" class="reveal">
+      <div class="section-title">One More Thing… 🎁</div>
+      <div class="section-sub">Are you ready for your final surprise?</div>
+      <button class="surprise-btn" onclick="triggerSurprise()">One last surprise 🎁✨</button>
+    </div>
+    <div id="surprise-reveal" class="surprise-reveal">
+      <div class="surprise-big">Happy Birthday<br>Siddhi 💖🎂</div>
+      <div class="surprise-sub">You mean the absolute world to me 🥺<br>May this year bring you all the joy you deserve 🌸✨</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECRET -->
+<section id="secret-section">
+  <div class="container reveal">
+    <div class="section-title">🔐 Secret Message</div>
+    <div class="section-sub">Answer this to unlock a hidden message just for you</div>
+    <p style="color:var(--text-mid);font-style:italic;margin-bottom:10px">What is the name of your favorite person? 😏</p>
+    <div class="secret-input-wrap">
+      <input class="secret-input" id="secret-input" type="text" placeholder="Type here... 💭" />
+      <button class="secret-btn" onclick="checkSecret()">Unlock 🔓</button>
+    </div>
+    <div class="secret-msg" id="secret-msg">
+      🌟 You found it! The secret message is:<br><br>
+      <span style="font-size:1.2rem;font-family:'Playfair Display',serif;font-style:italic;color:var(--text-mid)">"I hope every single day of your life feels as magical as you make mine feel. You're one in a million, Siddhi. Never forget that 💖"</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">Made with ❤️ just for you, Siddhi 💖</div>
+  <div class="footer-sub">🌸 Happy Birthday, my favorite person 🌸</div>
+</footer>
+
+<script>
+/* ============================================
+   DATA
+   ============================================ */
+const galleryData = [
+  { emoji: '🌸', caption: 'Our first memory 💕' },
+  { emoji: '🎂', caption: 'Birthday vibes ✨' },
+  { emoji: '🌙', caption: 'Late night talks 🌟' },
+  { emoji: '🧸', caption: 'Cuddle times 🥰' },
+  { emoji: '🎵', caption: 'Our song 🎶' },
+  { emoji: '🌹', caption: 'For you 💖' },
+  { emoji: '☕', caption: 'Coffee dates ☕' },
+  { emoji: '🌈', caption: 'Our moments 🌈' },
+];
+const reasonsData = [
+  { emoji: '😊', front: 'Your smile...', back: 'Your smile makes everything better, even the worst days 💫' },
+  { emoji: '🧸', front: 'My favorite...', back: 'You are my favorite person in the whole entire world 🧸' },
+  { emoji: '💫', front: 'Your laugh...', back: 'Your laugh is literally the best sound I know 💖' },
+  { emoji: '🌸', front: 'Your heart...', back: 'You have the kindest, most beautiful heart I\'ve ever known 🌸' },
+  { emoji: '✨', front: 'Your spirit...', back: 'You light up every room you walk into, effortlessly ✨' },
+  { emoji: '🌙', front: 'Your vibe...', back: 'Your energy is magical. Being around you just feels right 🌙' },
+];
+const giftsData = [
+  { emoji: '🧸', label: 'A Teddy Bear', msg: '🧸 Sending you the biggest, warmest hug in the form of this teddy bear! May it remind you how much you\'re loved 💖' },
+  { emoji: '🌸', label: 'Fresh Flowers', msg: '🌸 A bouquet of the prettiest flowers, just like you! You deserve to be celebrated every single day 🌺' },
+  { emoji: '🍫', label: 'Chocolates', msg: '🍫 Sending you all the chocolates and sweetness, because you deserve all the sweet things in life 💝' },
+  { emoji: '🎂', label: 'Birthday Cake', msg: '🎂 A beautiful birthday cake just for you! Make a wish and may every dream of yours come true 🌟' },
+];
+const letterText = `Today, on your birthday, I want you to know something from the bottom of my heart.
+
+You are one of the most beautiful, genuine, and special people I have ever had the privilege of knowing. The way you laugh, the way you care, the way you see the world — it's all uniquely, wonderfully you.
+
+I hope this year brings you every dream you've whispered to yourself, every wish you've made at 11:11, and every happiness you truly deserve.
+
+You deserve the entire world, Siddhi. Don't ever let anyone make you feel otherwise.
+
+Thank you for being you. Thank you for existing. Thank you for making everything a little brighter.
+
+Happy Birthday, my favorite person. 🌸✨💖`;
+
+/* ============================================
+   LOADER
+   ============================================ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    initParticles();
+  }, 2800);
+});
+
+/* ============================================
+   FLOATIES
+   ============================================ */
+const floatyEmojis = ['💖','🌸','✨','🧸','💫','🌷','🎀','💕','🌺','⭐'];
+const floatiesContainer = document.getElementById('floaties');
+for(let i=0;i<20;i++){
+  const f = document.createElement('span');
+  f.className='floaty';
+  f.textContent = floatyEmojis[Math.floor(Math.random()*floatyEmojis.length)];
+  f.style.left = Math.random()*100+'vw';
+  f.style.animationDuration = (8+Math.random()*12)+'s';
+  f.style.animationDelay = (Math.random()*15)+'s';
+  f.style.fontSize = (1+Math.random()*1.5)+'rem';
+  floatiesContainer.appendChild(f);
+}
+
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+const cursor = document.getElementById('cursor');
+const heartEmojis = ['💖','💕','✨','🌸','💫'];
+let lastTrail = 0;
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX+'px';
+  cursor.style.top = e.clientY+'px';
+  const now = Date.now();
+  if(now - lastTrail > 120){
+    lastTrail = now;
+    const h = document.createElement('span');
+    h.className = 'heart-trail';
+    h.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+    h.style.left = e.clientX+'px';
+    h.style.top = e.clientY+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(), 800);
+  }
+});
+
+/* ============================================
+   PARTICLES (HERO)
+   ============================================ */
+function initParticles(){
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+  const particles = [];
+  for(let i=0;i<60;i++){
+    particles.push({
+      x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+      r:Math.random()*3+1, vx:(Math.random()-0.5)*0.5, vy:(Math.random()-0.5)*0.5,
+      alpha:Math.random()*0.5+0.1,
+      color:`hsl(${330+Math.random()*60},80%,${70+Math.random()*20}%)`
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.color;
+      ctx.globalAlpha=p.alpha;
+      ctx.fill();
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>canvas.width) p.vx*=-1;
+      if(p.y<0||p.y>canvas.height) p.vy*=-1;
+    });
+    ctx.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+  window.addEventListener('resize',()=>{
+    canvas.width=canvas.offsetWidth;
+    canvas.height=canvas.offsetHeight;
+  });
+}
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+},{threshold:0.15});
+revealEls.forEach(el=>observer.observe(el));
+
+/* ============================================
+   TYPEWRITER
+   ============================================ */
+let twStarted = false;
+const twEl = document.getElementById('typewriter');
+const twText = 'The day my favorite person was born 💖';
+const bdayObserver = new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting && !twStarted){
+    twStarted = true;
+    let i=0;
+    const t = setInterval(()=>{
+      twEl.textContent = twText.slice(0,i);
+      i++;
+      if(i>twText.length) clearInterval(t);
+    },55);
+  }
+},{threshold:0.5});
+bdayObserver.observe(document.getElementById('bday'));
+
+/* ============================================
+   GALLERY
+   ============================================ */
+const grid = document.getElementById('gallery-grid');
+galleryData.forEach(item=>{
+  const p = document.createElement('div');
+  p.className='polaroid';
+  p.innerHTML=`<div class="polaroid-img"><span>${item.emoji}</span></div><div class="polaroid-caption">${item.caption}</div>`;
+  p.onclick=()=>openModal();
+  grid.appendChild(p);
+});
+function openModal(){ document.getElementById('modal').classList.add('open'); }
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+
+/* ============================================
+   REASONS
+   ============================================ */
+const rGrid = document.getElementById('reasons-grid');
+reasonsData.forEach(r=>{
+  const card = document.createElement('div');
+  card.className='flip-card';
+  card.innerHTML=`
+    <div class="flip-inner">
+      <div class="flip-front">
+        <div class="flip-emoji">${r.emoji}</div>
+        <div class="flip-front-text">${r.front}</div>
+        <div style="font-size:0.75rem;color:var(--text-light);margin-top:8px">hover to reveal ✨</div>
+      </div>
+      <div class="flip-back">
+        <div class="flip-back-text">${r.back}</div>
+      </div>
+    </div>`;
+  card.addEventListener('touchstart',()=>card.classList.toggle('flipped'));
+  rGrid.appendChild(card);
+});
+
+/* ============================================
+   GIFTS
+   ============================================ */
+const gGrid = document.getElementById('gifts-grid');
+giftsData.forEach(g=>{
+  const item = document.createElement('div');
+  item.className='gift-item';
+  item.innerHTML=`<span class="gift-emoji">${g.emoji}</span><span class="gift-label">${g.label}</span>`;
+  item.onclick=()=>showGiftPopup(g.emoji, g.msg);
+  gGrid.appendChild(item);
+});
+function showGiftPopup(emoji, msg){
+  document.getElementById('gift-popup-emoji').textContent=emoji;
+  document.getElementById('gift-popup-text').textContent=msg;
+  document.getElementById('gift-popup').classList.add('show');
+}
+function closeGiftPopup(){ document.getElementById('gift-popup').classList.remove('show'); }
+document.addEventListener('click',e=>{
+  const p=document.getElementById('gift-popup');
+  if(p.classList.contains('show')&&!p.contains(e.target)&&!e.target.closest('.gift-item')) closeGiftPopup();
+});
+
+/* ============================================
+   LETTER TYPEWRITER
+   ============================================ */
+let letterStarted=false;
+const letterEl=document.getElementById('letter-body');
+const letterObserver=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!letterStarted){
+    letterStarted=true;
+    let i=0;
+    const t=setInterval(()=>{
+      letterEl.textContent=letterText.slice(0,i);
+      i+=2;
+      if(i>letterText.length){clearInterval(t);letterEl.textContent=letterText;}
+    },30);
+  }
+},{threshold:0.3});
+letterObserver.observe(document.getElementById('letter'));
+
+/* ============================================
+   SURPRISE
+   ============================================ */
+function triggerSurprise(){
+  document.getElementById('surprise-pre').style.display='none';
+  document.getElementById('surprise-reveal').classList.add('show');
+  startConfetti();
+  launchBalloons();
+  playClickSound();
+}
+/* ============================================
+   CONFETTI
+   ============================================ */
+function startConfetti(){
+  const canvas=document.getElementById('confetti-canvas');
+  canvas.style.display='block';
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  const pieces=[];
+  const colors=['#FF9BAA','#D8BFD8','#FFDAB9','#FFB7C5','#E6E6FA','#FFC0CB','#A855F7'];
+  for(let i=0;i<200;i++){
+    pieces.push({
+      x:Math.random()*canvas.width, y:Math.random()*canvas.height-canvas.height,
+      w:8+Math.random()*8, h:12+Math.random()*8,
+      vx:(Math.random()-0.5)*4, vy:3+Math.random()*5,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      rot:Math.random()*360, rotV:(Math.random()-0.5)*6
+    });
+  }
+  let frame=0;
+  function drawConfetti(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p=>{
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillStyle=p.color;
+      ctx.globalAlpha=0.9;
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+      ctx.restore();
+      p.x+=p.vx; p.y+=p.vy; p.rot+=p.rotV;
+      if(p.y>canvas.height){ p.y=-20; p.x=Math.random()*canvas.width; }
+    });
+    frame++;
+    if(frame<300) requestAnimationFrame(drawConfetti);
+    else { ctx.clearRect(0,0,canvas.width,canvas.height); canvas.style.display='none'; }
+  }
+  drawConfetti();
+}
+/* ============================================
+   BALLOONS
+   ============================================ */
+function launchBalloons(){
+  const container=document.getElementById('balloons');
+  container.classList.add('show');
+  const balloonEmojis=['🎈','🎀','💖','🌸','✨','🎉'];
+  container.innerHTML='';
+  for(let i=0;i<12;i++){
+    const b=document.createElement('span');
+    b.className='balloon';
+    b.textContent=balloonEmojis[Math.floor(Math.random()*balloonEmojis.length)];
+    b.style.left=Math.random()*100+'vw';
+    b.style.animationDelay=(Math.random()*2)+'s';
+    b.style.fontSize=(2+Math.random()*2)+'rem';
+    container.appendChild(b);
+  }
+  setTimeout(()=>container.classList.remove('show'),5000);
+}
+
+/* ============================================
+   SECRET
+   ============================================ */
+function checkSecret(){
+  const val=document.getElementById('secret-input').value.trim().toLowerCase();
+  const answers=['siddhi','me','myself'];
+  if(answers.includes(val)||val.includes('siddhi')||val.includes('me')){
+    document.getElementById('secret-msg').classList.add('show');
+    startConfetti();
+  } else {
+    document.getElementById('secret-input').style.borderColor='#FF6B8A';
+    document.getElementById('secret-input').placeholder='Try again... 💭';
+    setTimeout(()=>{
+      document.getElementById('secret-input').style.borderColor='';
+    },1000);
+  }
+}
+
+/* ============================================
+   MUSIC
+   ============================================ */
+let musicPlaying=false;
+let audioCtx=null;
+let gainNode=null;
+function createMelody(){
+  if(audioCtx) return;
+  audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  gainNode=audioCtx.createGain();
+  gainNode.gain.value=0.06;
+  gainNode.connect(audioCtx.destination);
+  // Simple gentle arpeggio melody
+  const notes=[261.63,293.66,329.63,392,440,392,329.63,293.66];
+  let time=audioCtx.currentTime;
+  function scheduleNotes(){
+    notes.forEach((freq,i)=>{
+      const osc=audioCtx.createOscillator();
+      const g=audioCtx.createGain();
+      osc.connect(g); g.connect(gainNode);
+      osc.frequency.value=freq;
+      osc.type='sine';
+      g.gain.setValueAtTime(0,time+i*0.4);
+      g.gain.linearRampToValueAtTime(0.5,time+i*0.4+0.1);
+      g.gain.linearRampToValueAtTime(0,time+i*0.4+0.38);
+      osc.start(time+i*0.4);
+      osc.stop(time+i*0.4+0.4);
+    });
+    time+=notes.length*0.4;
+  }
+  function loop(){
+    scheduleNotes();
+    setTimeout(loop, notes.length*400+100);
+  }
+  loop();
+}
+function toggleMusic(){
+  if(!musicPlaying){
+    createMelody();
+    if(gainNode) gainNode.gain.value=0.06;
+    musicPlaying=true;
+    document.getElementById('music-btn').textContent='🔇';
+  } else {
+    if(gainNode) gainNode.gain.value=0;
+    musicPlaying=false;
+    document.getElementById('music-btn').textContent='🎵';
+  }
+}
+
+/* ============================================
+   CLICK SOUND
+   ============================================ */
+function playClickSound(){
+  try{
+    const a=new (window.AudioContext||window.webkitAudioContext)();
+    const o=a.createOscillator();
+    const g=a.createGain();
+    o.connect(g); g.connect(a.destination);
+    o.frequency.value=600;
+    g.gain.setValueAtTime(0.1,a.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,a.currentTime+0.2);
+    o.start(); o.stop(a.currentTime+0.2);
+  }catch(e){}
+}
+document.querySelectorAll('button,.gift-item,.polaroid,.nav-btn').forEach(el=>{
+  el.addEventListener('click',playClickSound);
+});
+
+/* ============================================
+   THEME
+   ============================================ */
+function toggleTheme(){
+  const isDark=document.body.dataset.theme==='dark';
+  document.body.dataset.theme=isDark?'':'dark';
+  document.getElementById('theme-btn').textContent=isDark?'🌙':'☀️';
+}
+
+/* ============================================
+   SCROLL TO NEXT
+   ============================================ */
+function scrollToNext(){
+  document.getElementById('bday').scrollIntoView({behavior:'smooth'});
+}
+
+/* ============================================
+   PARALLAX
+   ============================================ */
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  const hero=document.getElementById('hero');
+  if(hero) hero.style.backgroundPositionY=(sy*0.4)+'px';
+});
+
+/* ============================================
+   TOUCH SUPPORT FOR FLIP CARDS
+   ============================================ */
+// Already handled above
+</script>
+</body>
+</html>
