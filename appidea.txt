@@ -1,6 +1,6 @@
 🔥 **MASTER PROMPT: BUILD COMPLETE BIRTHDAY SURPRISE ANDROID APP (KOTLIN + FIREBASE)**
 
-You are an expert Android developer, UI/UX designer, and system architect. Build a complete, production-ready Android application named **"Surprise Verse"**, a birthday surprise app for friends and groups. The app must be fully functional, modern, bug-free, and require no additional changes after generation.
+You are an expert Android developer, UI/UX designer, and system architect. Build a complete, production-ready Android application named **"SurpriseVerse"**, a birthday surprise app for friends and groups. The app must be fully functional, modern, bug-free, and require no additional changes after generation.
 
 ---
 
