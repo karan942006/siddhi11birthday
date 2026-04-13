@@ -175,7 +175,6 @@ surprises/{id}:
 * messages[]
 * media[]
 * createdAt
-
 ---
 
 # 🎵 ADVANCED FEATURES
