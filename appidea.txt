@@ -1,0 +1,267 @@
+🔥 **MASTER PROMPT: BUILD COMPLETE BIRTHDAY SURPRISE ANDROID APP (KOTLIN + FIREBASE)**
+
+You are an expert Android developer, UI/UX designer, and system architect. Build a complete, production-ready Android application named **"SurpriseVerse"**, a birthday surprise app for friends and groups. The app must be fully functional, modern, bug-free, and require no additional changes after generation.
+
+---
+
+# 🎯 CORE REQUIREMENTS
+
+Develop a **fully working Android app** using:
+
+* Language: Kotlin
+* UI: Jetpack Compose (modern UI, no XML)
+* Architecture: MVVM + Clean Architecture
+* Backend: Firebase (Authentication + Firestore + Storage)
+* Navigation: Jetpack Navigation Compose
+* Async: Kotlin Coroutines + Flow
+* Image Loading: Coil
+* Animations: Lottie
+* State Management: ViewModel + StateFlow
+
+The app must compile and run without errors.
+
+---
+
+# 🔐 AUTHENTICATION SYSTEM
+
+Create full authentication:
+
+* Login & Register
+* Fields: Username, Email, Password
+* Role Selection:
+
+  * Birthday Boy
+  * Birthday Girl
+  * Friend (Maker)
+
+Store user data in Firestore:
+users/{userId}:
+
+* username
+* email
+* role
+
+---
+
+# 📱 APP FLOW
+
+1. Splash Screen (animated)
+2. Authentication Screen
+3. Dashboard Screen
+4. Create Surprise Flow (multi-step)
+5. Share Screen
+6. Surprise Viewer Screen
+
+---
+
+# 🎁 FRIEND (MAKER) FLOW
+
+## Step 1: Select Type
+
+* Single
+* Group
+
+## Step 2: Input Data
+
+If Single:
+
+* Input maker name
+
+If Group:
+
+* Input number of members (max 20)
+* For each member:
+
+  * Name
+  * Gender (Boy/Girl)
+
+## Step 3: Select Birthday Type
+
+* Birthday Boy
+* Birthday Girl
+
+## Step 4: Add Messages
+
+* Each friend adds message
+
+## Step 5: Upload Media
+
+* Images (Firebase Storage)
+* Optional voice notes
+
+---
+
+# 🎨 THEMES
+
+## Girl Theme:
+
+* Colors: Pink, Lavender
+* Elements: Teddy, Flowers, Hearts, Chocolates
+* Soft animation
+
+## Boy Theme:
+
+* Colors: Blue, Purple
+* Elements: Rockets, Gaming, Confetti
+* Energetic animation
+
+---
+
+# 🧍 CHARACTER SYSTEM
+
+* Generate avatars based on gender
+* Display all members as characters
+* Animate avatars (bounce, wave)
+
+---
+
+# 🎮 MINI GAMES
+
+Implement at least 2 games:
+
+## Girl:
+
+* Memory card matching
+* Gift catcher game
+
+## Boy:
+
+* Tap speed game
+* Rocket launch game
+
+Games must unlock messages progressively.
+
+---
+
+# 🎂 FINAL SURPRISE SCREEN
+
+* Big animated birthday message
+* Show all messages
+* Show avatars
+* Confetti + music
+* “Final Hug Animation”
+
+---
+
+# 🔗 SHARING SYSTEM
+
+* Generate unique surpriseId
+
+* Store in Firestore:
+  surprises/{id}
+
+* Create shareable dynamic link:
+  https://surpriseverse.app/surprise/{id}
+
+* When opened:
+
+  * App loads that surprise
+
+---
+
+# 🔥 FIREBASE STRUCTURE
+
+Collections:
+
+* users
+* surprises
+
+surprises/{id}:
+
+* creatorId
+* type (single/group)
+* birthdayType
+* members[]
+* messages[]
+* media[]
+* createdAt
+
+---
+
+# 🎵 ADVANCED FEATURES
+
+Include:
+
+* Background music
+* Voice messages playback
+* Countdown timer (unlock at midnight)
+* Fireworks animation
+* Story mode progression
+* Multi-level surprise unlocking
+
+---
+
+# 🎨 UI/UX REQUIREMENTS
+
+* Modern, aesthetic UI
+* Glassmorphism cards
+* Gradient backgrounds
+* Smooth animations
+* Responsive layout
+* Dark + light adaptive colors
+
+---
+
+# ⚙️ PROJECT STRUCTURE
+
+Follow Clean Architecture:
+
+* data/
+* domain/
+* presentation/
+
+Include:
+
+* Repository pattern
+* UseCases
+* ViewModels
+
+---
+
+# 🧪 ERROR HANDLING
+
+* Handle null data
+* Handle network errors
+* Show loading indicators
+* Show error messages
+
+---
+
+# 📦 FINAL OUTPUT REQUIREMENTS
+
+Generate:
+
+1. Full Android Studio Project
+2. All Kotlin files
+3. Firebase integration setup
+4. Gradle dependencies
+5. Navigation setup
+6. ViewModels, UI screens, repositories
+7. Game logic
+8. Animations setup
+
+The code must:
+
+* Compile without errors
+* Be clean and readable
+* Be production-ready
+
+---
+
+# 🚀 EXTRA QUALITY REQUIREMENTS
+
+* No placeholder code
+* No TODOs
+* Fully working logic
+* Proper comments
+* Optimized performance
+
+---
+
+# 🎯 GOAL
+
+Deliver a **complete, beautiful, emotional, interactive birthday surprise app** that feels like a real product and works perfectly on first run.
+
+---
+
+END OF PROMPT
